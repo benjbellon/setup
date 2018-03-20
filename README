@@ -1,11 +1,12 @@
 # Setup
 
-Bare minimal setup.
+Run setup.sh for a bare minimal setup.
 
 ## Local Enviornment
 `.bash_profile` loads `.bash_profile.local` to keep a private local environment
+`.bashrc` loads `.bashrc.local` to keep a private local environment
 
-## Thing to do
+## Things to do
 
 #### Suggested Applications
 
@@ -76,5 +77,5 @@ wpa_supplicant
 **Gnome Specific**
 boabab
 
-#### Good monospaced fonts
+#### Monospaced fonts I like
 [Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
