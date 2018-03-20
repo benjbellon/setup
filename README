@@ -1,0 +1,80 @@
+# Setup
+
+Bare minimal setup.
+
+## Local Enviornment
+`.bash_profile` loads `.bash_profile.local` to keep a private local environment
+
+## Thing to do
+
+#### Suggested Applications
+
+These application packages are based on the packages from [archlinux.org](https://www.archlinux.org/packages/). Each distro will vary.
+
+> Note for ArchLinux users: Not all these packages are available from the standard repos. `cower` is recommended as a great lookup, discovery, and download tool, so you don't need to remember the entire snapshot URL ;)
+
+**From the package manager**:
+autoconf
+automake
+binutils
+bash
+clojure
+docker
+docker-compose
+dropbox
+emacs-git
+firefox
+gcc
+gcc-libs
+gdb
+ghc
+gimp
+git
+glibc
+go
+grep
+gzip
+htop
+jdk8-openjdk
+jq
+keychain
+less
+libreoffice-fresh
+libtool
+nasm
+npm
+openssh
+pass
+python
+python-pip
+rsync
+sbcl
+sbt
+scala
+screen
+texlive-core
+vim
+xsel
+
+**Self managed /usr/local**:
+arcanist
+libphutil
+
+**ArchLinux specific**:
+alsa-utils
+bluez-utils
+broadcom-wl
+chromium
+chromium-widevine
+cower
+intel-ucode (for macbookpro)
+mbpfan-git
+networkmanager
+pepper-flash
+wpa_supplicant
+
+**Gnome Specific**
+boabab
+
+#### Good monospaced fonts
+[Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
