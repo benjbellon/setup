@@ -19,7 +19,6 @@ else
     export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]$STY\[\033[36;1m\]#$ssh_text\[\033[32m\]:\[\033[33;1m\]\W\[\033[m\]\[\033[34;1m\]\$(parse_git_branch)\[\033[m\]$ "
 fi
 
-
 # Alias
 alias sr='screen -r'
 alias sls='screen -ls'
@@ -29,10 +28,13 @@ alias se='sudo emacs -nw'
 alias vi='vim'
 alias wip='git add -A && git commit -m \"wip\"'
 alias etags='etags .*{c,C,cc,cpp,h,hh,hpp,cpp}'
+alias r='rg'
+alias grep='grep --color'
+alias g='googler'
 
 export ALTERNATE_EDITOR=""
 export EDITOR=e
-export VISUAL=e
+export VISUAL=emacs
 
 # NOTE: These env vars happen to be wanted. This also happens to fix a weird bug (just for reference):
 # This is a hack to avoid sbt/scala jline error introduced in the latest ncurses update
@@ -58,12 +60,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     export LS_COLORS="di=1;33:ln=1;35:so=1;32:pi=1;30:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
-    alias grep='grep --color'
     alias open='xdg-open'
     alias ls='ls --color=auto'
 
     # Setup keychain
-    /usr/bin/keychain $HOME/.ssh/id_ed25519 $HOME/.ssh/nido_id_ed25519
+    /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519 $HOME/.ssh/nido_id_ed25519
     . $HOME/.keychain/${HOSTNAME}-sh
     # . $HOME/.keychain/${HOSTNAME}-sh-gpg # gpg keychain
     # Flush all cached keys in memory. Any agent(s) will continue to run.
