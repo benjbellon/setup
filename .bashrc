@@ -33,7 +33,7 @@ alias grep='grep --color'
 alias g='googler'
 
 export ALTERNATE_EDITOR=""
-export EDITOR=e
+export EDITOR=vim
 export VISUAL=emacs
 
 # NOTE: These env vars happen to be wanted. This also happens to fix a weird bug (just for reference):
@@ -65,7 +65,9 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
     # Setup keychain
     /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519 $HOME/.ssh/nido_id_ed25519
+    /usr/bin/keychain --agents gpg AE38865D
     . $HOME/.keychain/${HOSTNAME}-sh
+    . $HOME/.keychain/${HOSTNAME}-sh-gpg
     # . $HOME/.keychain/${HOSTNAME}-sh-gpg # gpg keychain
     # Flush all cached keys in memory. Any agent(s) will continue to run.
     # Rationale: any user logging in should be assumed to be an intruder
@@ -83,4 +85,5 @@ if [ -f "/etc/arch-release" ]; then
 fi
 
 source ~/.setup/.git-completion.bash
+source /usr/local/arcanist/resources/shell/bash-completion
 source ~/.setup/.bashrc.local
