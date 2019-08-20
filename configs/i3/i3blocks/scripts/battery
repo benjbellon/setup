@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+
+BAT_DIR=/sys/class/power_supply/BAT0
+CHARGE=$(cat $BAT_DIR/capacity)
+CHARGE_FULL=$(cat $BAT_DIR/charge_full)
+CHARGE_NOW=$(cat $BAT_DIR/charge_now)
+STATUS=$(cat $BAT_DIR/status)
+
+ICON_BATTERY_25_P=
+ICON_BATTERY_50_P=
+ICON_BATTERY_75_P=
+ICON_BATTERY_FULL=
+ICON_BATTERY_CHARGING=
+ICON_FULL=
+
+PERCENT_FULL=$(echo - | awk -v charge_full="$CHARGE_FULL" -v charge_now="$CHARGE_NOW" '{printf "%1.0f\n", (charge_now / charge_full)*100}')
+if [[ $STATUS == "Full" ]]; then
+    echo "$ICON_FULL"
+elif [[ $STATUS == "Charging" ]]; then
+    echo "$ICON_BATTERY_CHARGING ($PERCENT_FULL%)"
+elif [[ $PERCENT_FULL -lt 100 ]]; then
+    echo "$ICON_BATTERY_FULL ($PERCENT_FULL%)"
+elif [[ $PERCENT_FULL -lt 75 ]]; then
+    echo "$ICON_BATTERY_75_P ($PERCENT_FULL%)"
+elif [[ $PERCENT_FULL -lt 50 ]]; then
+    echo "$ICON_BATTERY_50_P ($PERCENT_FULL%)"
+elif [[ $PERCENT_FULL -lt 25 ]]; then
+    echo "$ICON_BATTERY_25_P ($PERCENT_FULL%)"
+fi

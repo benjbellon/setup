@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+PAC_UPDATES=$(checkupdates | wc -l)
+AUR_UPDATES=$(cower -u | wc -l)
+
+if [[ $PAC_UPDATES -gt 0 || $AUR_UPDATES -gt 0 ]]; then
+   echo " [$PAC_UPDATES .. $AUR_UPDATES]"
+else
+   echo "<span color=\"#586e75\"> 0</span>"
+fi

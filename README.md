@@ -8,6 +8,23 @@ Run setup.sh for a bare minimal setup.
 
 ## Things to do
 
+### $PROJ_DIR/scripts
+
+General scripts should be installed/symlinked into `/usr/local/bin`
+
+i3blocks scripts should be installed/symlinked into `/usr/local/i3blocks/`
+
+```
+for i in $(ls ~/.setup/configs/i3/i3blocks/scripts); do sudo ln -s ~/.setup/configs/i3/i3blocks/scripts/$i $i; done
+```
+
+### Udev Rules
+https://wiki.archlinux.org/index.php/Udev
+
+When using i3wm, it's nice to have external displays automatically detected. Since /sys isn't a real filesystem, inotifywait has no guarantees. Thus, we write a udev rule which points to our `$PROJ_DIR/i3/format_displays.sh` script.
+
+_TODO_
+
 #### Suggested Applications
 
 These application packages are based on the packages from [archlinux.org](https://www.archlinux.org/packages/). Each distro will vary.

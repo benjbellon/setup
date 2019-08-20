@@ -30,6 +30,8 @@ for i in ${bash_files[@]}; do
     fi
 done
 
+## TODO: symlink i3blocks scripts
+
 if [ "$(uname)" = "Darwin" ]; then
     bash setup_brew.bash
 

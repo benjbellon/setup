@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+BRIGHTNESS_DIR=/sys/class/backlight/intel_backlight
+MAX_BRIGHTNESS=$(cat $BRIGHTNESS_DIR/max_brightness)
+CURR_BRIGHTNESS=$(cat $BRIGHTNESS_DIR/actual_brightness)
+
+ICON_BRIGHT_SUN="☀"
+BRIGHTNESS_P=$(echo - | awk -v max="$MAX_BRIGHTNESS" -v curr="$CURR_BRIGHTNESS" '{printf "%1.0f\n", (curr / max)*100}')
+
+echo "$ICON_BRIGHT_SUN $BRIGHTNESS_P%"

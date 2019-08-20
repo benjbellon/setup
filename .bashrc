@@ -10,6 +10,11 @@ function parse_git_branch () {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+# mkdir and follow into dir
+function mkdirf () {
+    mkdir -p $1 && cd $1
+}
+
 # Customize prompt
 if [ -n "$SSH_CLIENT" ]; then ssh_text="ssh"
 fi
@@ -31,9 +36,11 @@ alias etags='etags .*{c,C,cc,cpp,h,hh,hpp,cpp}'
 alias r='rg'
 alias grep='grep --color'
 alias g='googler'
+alias pt='prototool'
+alias t='tmux'
 
 export ALTERNATE_EDITOR=""
-export EDITOR=vim
+export EDITOR="vim"
 export VISUAL=emacs
 
 # NOTE: These env vars happen to be wanted. This also happens to fix a weird bug (just for reference):
@@ -64,7 +71,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     alias ls='ls --color=auto'
 
     # Setup keychain
-    /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519 $HOME/.ssh/nido_id_ed25519
+    /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519
     /usr/bin/keychain --agents gpg AE38865D
     . $HOME/.keychain/${HOSTNAME}-sh
     . $HOME/.keychain/${HOSTNAME}-sh-gpg
@@ -87,3 +94,5 @@ fi
 source ~/.setup/.git-completion.bash
 source /usr/local/arcanist/resources/shell/bash-completion
 source ~/.setup/.bashrc.local
+
+complete -C /usr/bin/vault vault
