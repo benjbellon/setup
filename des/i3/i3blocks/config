@@ -1,28 +1,28 @@
-command=/usr/lib/i3blocks/$BLOCK_NAME
+command=/usr/local/i3blocks/$BLOCK_NAME
 separator=false
 separator_block_width=15
 markup=pango
 
 [battery]
-command=/usr/local/i3blocks/$BLOCK_NAME
 interval=1
-color=#eee8d5
+color=#a8afb0
 
 [brightness]
-command=/usr/local/i3blocks/$BLOCK_NAME
 interval=once
 signal=9
 color=#ffff33
 
 [volume]
-command=/usr/local/i3blocks/$BLOCK_NAME
 instance=Master
 interval=once
 signal=10
 color=#4ca2df
 
+[fan]
+interval=1
+color=#a8afb0
+
 [bandwidth]
-command=/usr/local/i3blocks/$BLOCK_NAME
 instance=wlp3s0
 interval=1
 # color=#859900
@@ -38,11 +38,9 @@ interval=10
 color=#cb4b16
 
 [archupdates]
-command=/usr/local/i3blocks/$BLOCK_NAME
 interval=60
 color=#49E20E
 
 [calendar]
-command=/usr/local/i3blocks/calendar
 interval=60
 color=#ffffff

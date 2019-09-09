@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+FAN_DIR=/sys/devices/platform/applesmc.768
+MAX_FAN=$(cat $FAN_DIR/fan1_max)
+CURR_FAN=$(cat $FAN_DIR/fan1_output)
+
+ICON_FAN=""
+FAN_P=$(echo - | awk -v max="$MAX_FAN" -v curr="$CURR_FAN" '{printf "%1.0f\n", (curr / max)*100}')
+
+echo "$ICON_FAN $FAN_P%"

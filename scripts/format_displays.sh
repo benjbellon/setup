@@ -4,7 +4,7 @@
 DISPLAYS=( $(xrandr | grep " connected" | awk '{print $1}') )
 declare -A DISP_RES
 
-BG_IMG="~/pictures/Yosemite-Color-Block.png"
+BG_IMG="~/.setup/des/i3/assets/wallpaper/yosemite_color_block.png"
 
 VERBOSE=""
 if_echo () {
