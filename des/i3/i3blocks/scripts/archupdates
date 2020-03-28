@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 PAC_UPDATES=$(checkupdates | wc -l)
-AUR_UPDATES=$(cower -u | wc -l)
+AUR_UPDATES=$(auracle sync -q | wc -l)
 
 if [[ $PAC_UPDATES -gt 0 || $AUR_UPDATES -gt 0 ]]; then
    echo " [$PAC_UPDATES .. $AUR_UPDATES]"

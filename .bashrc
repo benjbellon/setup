@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# History size
+HISTSIZE=1000000
+
 # generic setup
 function parse_git_branch () {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -71,7 +74,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     alias ls='ls --color=auto'
 
     # Setup keychain
-    /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519 $HOME/.ssh/nido_id_ed25519
+    /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519 $HOME/.ssh/imagine_id_rsa $HOME/.ssh/nido_id_ed25519
     /usr/bin/keychain --agents gpg AE38865D
     . $HOME/.keychain/${HOSTNAME}-sh
     . $HOME/.keychain/${HOSTNAME}-sh-gpg
@@ -96,3 +99,6 @@ source /usr/local/arcanist/resources/shell/bash-completion
 source ~/.setup/.bashrc.local
 
 complete -C /usr/bin/vault vault
+complete -C /usr/bin/aws_completer aws
+complete -C /usr/bin/terraform terraform
+alias please='python ~/workspace/imagine/infrastructure/scripts/please/please.py'

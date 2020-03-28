@@ -42,6 +42,7 @@ EDP_1=${DISP_RES["eDP-1"]}
 DP_1=${DISP_RES["DP-1"]}
 DP_2=${DISP_RES["DP-2"]}
 HDMI_1=${DISP_RES["HDMI-1"]}
+HDMI_2=${DISP_RES["HDMI-2"]}
 
 if [ -n "$EDP_1" ]; then
     # if no other displays are set, then we bring all windows into eDP-1
@@ -54,9 +55,10 @@ if [ -n "$EDP_1" ]; then
     fi
 fi
 
-if [ -n "$DP_1" ]; then
-    if_echo "Found DP-1. Setting DP-1 above primary display (eDP-1)"
-    xrandr --output DP-1 --mode "$DP_1" --above eDP-1
+# Add this to make my work computer display work with HDMI2
+if [ -n "$HDMI_2" ]; then
+    if_echo "Found HDMI-2. Setting HDMI-2 above primary display (eDP-1)"
+    xrandr --output HDMI-2 --mode "$HDMI2" --above eDP-1
 fi
 
 if [[ -n "$DP_2" && -n "$DP_1" ]]; then
@@ -67,16 +69,16 @@ elif [[ -n "$DP_2" ]]; then
        xrandr --output DP-2 --mode "$DP_2" --above eDP-1
 fi
 
-if [[ -n "$HDMI_1" && -n "$DP_2" && "$DP_1" ]]; then
-    if_echo "Found HDMI-1. Setting it right of DP-2"
-    xrandr --output HDMI-1 --mode "$HDMI_1" --right-of DP-2
-elif [[ -n "$HDMI_1" && ( "$DP_2" || "$DP_1" )  ]]; then
+if [[ -n "$HDMI_2" && -n "$DP_2" && "$DP_1" ]]; then
+    if_echo "Found HDMI-2. Setting it right of DP-2"
+    xrandr --output HDMI-2 --mode "$HDMI_2" --right-of DP-2
+elif [[ -n "$HDMI_2" && ( "$DP_2" || "$DP_1" )  ]]; then
     if [ -n "$DP_2" ]; then
-        if_echo "Found HDMI-1 and DP-2 but not DP-1. Setting HDMI-1 right of DP-2"
-        xrandr --output HDMI-1 --mode "$HDMI_1" --right-of DP-2
+        if_echo "Found HDMI-2 and DP-2 but not DP-1. Setting HDMI-2 right of DP-2"
+        xrandr --output HDMI-2 --mode "$HDMI_2" --right-of DP-2
     else
-        if_echo "Found HDMI-1 and DP-1 but not DP-2. Setting HDMI-1 right of DP-1"
-        xrandr --output HDMI-1 --mode "$HDMI_1" --right-of DP-1
+        if_echo "Found HDMI-2 and DP-1 but not DP-2. Setting HDMI-2 right of DP-1"
+        xrandr --output HDMI-2 --mode "$HDMI_2" --right-of DP-1
     fi
 fi
 
