@@ -8,3 +8,6 @@ export PATH
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 source ~/.setup/.bash_profile.local
+
+# opam configuration
+test -r /home/benj/.opam/opam-init/init.sh && . /home/benj/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
