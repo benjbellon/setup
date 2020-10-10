@@ -57,7 +57,7 @@ export VISUAL=emacs
 if [ "$(uname)" = "Darwin" ]; then
 export HADOOP_HOME="`brew --prefix hadoop`"
 export MONO_GAC_PREFIX="/usr/local"
-
+export BASH_SILENCE_DEPRECATION_WARNING=1
 setjdk() { # Set java version on the fly
     export JAVA_HOME=$(/usr/libexec/java_home -v $1)
 }
