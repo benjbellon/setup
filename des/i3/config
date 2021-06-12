@@ -28,9 +28,6 @@ exec --no-startup-id compton --config ~/.config/compton.conf -b
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
-# Lock screen with i3lock and custom wallpaper
-exec --no-startup-id /usr/local/bin/i3lock
-
 ## Allow yad to float for i3bar calendar
 for_window [class="Yad"] floating enable
 
@@ -43,9 +40,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -SIGRTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGRTMIN+10 i3blocks
 
-# Use change_brightness (in .setup dir) to adjust backlight
-bindsym XF86MonBrightnessUp exec --no-startup-id change_brightness -i 50 && pkill -SIGRTMIN+9 i3blocks
-bindsym XF86MonBrightnessDown exec --no-startup-id change_brightness -d 50 && pkill -SIGRTMIN+9 i3blocks
+# Use https://github.com/Hummer12007/brightnessctl to adjust backlight
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5% && pkill -SIGRTMIN+9 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && pkill -SIGRTMIN+9 i3blocks
 
 # Use format_displays (in .setup dir) to configure external displays
 bindsym XF86LaunchA exec --no-startup-id format_displays
@@ -67,6 +64,9 @@ bindsym $mod+q kill
 # bindsym $mod+space exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+space exec --no-startup-id rofi -lines 5 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Source Code Pro 18'
 bindsym $mod+Tab exec --no-startup-id rofi -lines 5 -padding 18 -width 60 -location 0 -show window -sidebar-mode -columns 4 -font 'Source Code Pro 18'
+
+# Lock screen
+bindsym $mod+F9 exec --no-startup-id "~/.setup/des/i3/i3lock-color-custom.sh"
 
 # change focus
 bindsym $mod+h focus left
