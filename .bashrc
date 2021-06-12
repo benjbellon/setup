@@ -74,7 +74,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     alias ls='ls --color=auto'
 
     # Setup keychain
-    /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519 $HOME/.ssh/imagine_id_rsa $HOME/.ssh/nido_id_ed25519
+    /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519 $HOME/.ssh/nido_id_ed25519
     /usr/bin/keychain --agents gpg AE38865D
     . $HOME/.keychain/${HOSTNAME}-sh
     . $HOME/.keychain/${HOSTNAME}-sh-gpg
@@ -95,7 +95,7 @@ if [ -f "/etc/arch-release" ]; then
 fi
 
 source ~/.setup/.git-completion.bash
-source /usr/local/arcanist/resources/shell/bash-completion
+#source /usr/local/arcanist/resources/shell/bash-completion
 source ~/.setup/.bashrc.local
 
 complete -C /usr/bin/vault vault

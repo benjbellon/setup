@@ -131,12 +131,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to monitor
-bindsym $mod+Mod1+1 focus output eDP-1
-bindsym $mod+Mod1+2 focus output DP-1
-bindsym $mod+Mod1+3 focus output DP-2
-bindsym $mod+Mod1+4 focus output HDMI-1
-
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2

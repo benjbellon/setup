@@ -23,17 +23,17 @@ interval=1
 color=#a8afb0
 
 [bandwidth]
-instance=wlp3s0
+instance=wlp114s0
 interval=1
 # color=#859900
 
 [memory]
-label=
+label= 
 interval=1
 color=#e6ccff
 
 [temperature]
-label=
+label= 
 interval=10
 color=#cb4b16
 
