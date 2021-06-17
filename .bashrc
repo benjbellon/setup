@@ -5,12 +5,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# History size
-HISTSIZE=1000000
+export HISTSIZE=-1
 
 # generic setup
 function parse_git_branch () {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+function show_opam_switch () {
+    current_switch="$(opam switch show)"
+    if [ ! -z "$current_switch" ] && [ "$current_switch" != "default" ]; then
+        echo $(echo $current_switch | rev | cut -d'/' -f1 | rev) "← "
+    fi
 }
 
 # mkdir and follow into dir
@@ -19,12 +25,13 @@ function mkdirf () {
 }
 
 # Customize prompt
-if [ -n "$SSH_CLIENT" ]; then ssh_text="ssh"
+if [ -n "$SSH_CLIENT" ]; then
+    ssh_text="ssh"
 fi
 if [ -z $STY ]; then
-    export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[36;1m\]#$ssh_text\[\033[32m\]:\[\033[33;1m\]\W\[\033[m\]\[\033[34;1m\]\$(parse_git_branch)\[\033[m\]$ "
+    export PS1="\[\033[0;34m\]\$(show_opam_switch)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[36;1m\]#$ssh_text\[\033[32m\]:\[\033[33;1m\]\W\[\033[m\]\[\033[34;1m\]\$(parse_git_branch)\[\033[m\]$ "
 else
-    export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]$STY\[\033[36;1m\]#$ssh_text\[\033[32m\]:\[\033[33;1m\]\W\[\033[m\]\[\033[34;1m\]\$(parse_git_branch)\[\033[m\]$ "
+    export PS1="\[\033[0;34m\]\$(show_opam_switch)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]$STY\[\033[36;1m\]#$ssh_text\[\033[32m\]:\[\033[33;1m\]\W\[\033[m\]\[\033[34;1m\]\$(parse_git_branch)\[\033[m\]$ "
 fi
 
 # Alias
@@ -95,10 +102,10 @@ if [ -f "/etc/arch-release" ]; then
 fi
 
 source ~/.setup/.git-completion.bash
-#source /usr/local/arcanist/resources/shell/bash-completion
 source ~/.setup/.bashrc.local
 
+complete -cf sudo
 complete -C /usr/bin/vault vault
 complete -C /usr/bin/aws_completer aws
 complete -C /usr/bin/terraform terraform
-alias please='python ~/workspace/imagine/infrastructure/scripts/please/please.py'
+complete -C /usr/bin/packer packer

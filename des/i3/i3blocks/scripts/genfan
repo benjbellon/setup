@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+FAN_RPMS=()
+ICON_FAN=""
+
+IFS=$'\n'
+for i in $(sensors | grep RPM); do
+    RPM=$(echo $i | awk '{print $2}')
+    if [ "$RPM" -ne "0" ]; then
+        FAN_RPMS+="$ICON_FAN $RPM "
+    fi
+done
+
+echo "${FAN_RPMS[@]}"

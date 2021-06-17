@@ -69,6 +69,11 @@ Xft.dpi: 185
 URxvt*font: xft:Source Code Pro Medium:size=9
 URxvt*italicFont: xft:Source Code Pro Medium:size=9:italic:autohint=true:pixelsize=9
 URxvt*scrollBar: false
+URxvt.letterSpace: -1
+
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
