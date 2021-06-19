@@ -41,8 +41,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGRTMIN+10 i3blocks
 
 # Use https://github.com/Hummer12007/brightnessctl to adjust backlight
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5% && pkill -SIGRTMIN+9 i3blocks
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && pkill -SIGRTMIN+9 i3blocks
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +1% && pkill -SIGRTMIN+9 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%- && pkill -SIGRTMIN+9 i3blocks
 
 # Use format_displays (in .setup dir) to configure external displays
 bindsym XF86LaunchA exec --no-startup-id format_displays
@@ -191,6 +191,9 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# Limit floating window size
+floating_maximum_size -1 x -1
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

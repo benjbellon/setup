@@ -2,10 +2,10 @@
 
 B='#00000000'  # blank
 C='#ffffff22'  # clear ish
-D='#ff00ffcc'  # default
-T='#ee00eeee'  # text
-W='#880000bb'  # wrong
-V='#bb00bbbb'  # verifying
+D='#617c8c'    # default
+T='#bfd2d5'    # text
+W='#3a5d5f'    # wrong
+V='#617c8c'    # verifying
 
 i3lock \
 --insidever-color=$C   \
@@ -32,4 +32,4 @@ i3lock \
 --clock               \
 --indicator           \
 --time-str="%H:%M:%S"  \
---date-str="%A, %m %Y" \
+--date-str="%A, %m %Y" \ && xset dpms force off
