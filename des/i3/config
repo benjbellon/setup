@@ -19,6 +19,9 @@ font pango:monospace 8
 # font pango:DejaVu Sans Mono 8
 font pango:Source Code Pro 8
 
+# Order monitors
+exec --no-startup-id xrandr --output DVI-D-0 --auto --output HDMI-0 --auto --left-of DVI-D-0
+
 # Background
 exec --no-startup-id feh --bg-fill ~/.setup/des/i3/assets/wallpaper/yosemite_color_block.png
 
@@ -43,6 +46,12 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 # Use https://github.com/Hummer12007/brightnessctl to adjust backlight
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +1% && pkill -SIGRTMIN+9 i3blocks
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%- && pkill -SIGRTMIN+9 i3blocks
+
+# Take a screenshot
+bindsym --release $mod+F3 exec --no-startup-id "/usr/bin/import ~/scratch/screenshots/ss.png && cp ~/scratch/screenshots/latest.png ~/scratch/screenshots/$(date +%F_%T.%N).png"
+
+# Use change_fan (int .setup dir) to adjust fan speeds
+# TBD
 
 # Use format_displays (in .setup dir) to configure external displays
 bindsym XF86LaunchA exec --no-startup-id format_displays
@@ -130,6 +139,16 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+## AD2 Specific
+# workspace $ws1 output HDMI-0
+# workspace $ws2 output DVI-D-0
+
+# # switch to monitor
+# bindsym $mod+Mod1+1 focus output eDP-1
+# bindsym $mod+Mod1+2 focus output DP-1
+# bindsym $mod+Mod1+3 focus output DP-2
+# bindsym $mod+Mod1+4 focus output HDMI-1
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1

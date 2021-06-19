@@ -3,22 +3,13 @@ separator=false
 separator_block_width=15
 markup=pango
 
-[battery]
-interval=1
-color=#a8afb0
-
-[brightness]
-interval=once
-signal=9
-color=#ffff33
-
 [volume]
 instance=Master
 interval=once
 signal=10
 color=#4ca2df
 
-[fan]
+[genfan]
 interval=1
 color=#a8afb0
 
@@ -28,12 +19,12 @@ interval=1
 # color=#859900
 
 [memory]
-label= 
+label=
 interval=1
 color=#e6ccff
 
 [temperature]
-label= 
+label=
 interval=10
 color=#cb4b16
 
