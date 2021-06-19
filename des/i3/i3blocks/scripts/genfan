@@ -6,9 +6,8 @@ ICON_FAN=""
 IFS=$'\n'
 for i in $(sensors | grep RPM); do
     RPM=$(echo $i | awk '{print $2}')
-    if [ "$RPM" -ne "0" ]; then
-        FAN_RPMS+="$ICON_FAN $RPM "
-    fi
+    FAN_RPMS+="$ICON_FAN $RPM "
 done
 
-echo "${FAN_RPMS[@]}"
+# trim trailing whitespace
+echo "${FAN_RPMS[@]}" | awk '{$1=$1;print}'
