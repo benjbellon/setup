@@ -28,7 +28,7 @@ i3lock \
 --bshl-color=$W        \
 \
 --screen 1            \
--i "$HOME/.setup/des/i3/assets/wallpaper/dark_forest.png" \
+-i "$HOME/.setup/des/i3/assets/lockscreen/dark_forest.png" \
 --clock               \
 --indicator           \
 --time-str="%H:%M:%S"  \

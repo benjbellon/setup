@@ -76,7 +76,9 @@ alias ls=' ls -GFh'
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     export LS_COLORS="di=1;33:ln=1;35:so=1;32:pi=1;30:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
     alias pbcopy='xsel --clipboard --input'
+    alias c=pbcopy
     alias pbpaste='xsel --clipboard --output'
+    alias v=pbpaste
     alias open='xdg-open'
     alias ls='ls --color=auto'
 

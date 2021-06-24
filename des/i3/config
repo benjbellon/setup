@@ -24,6 +24,8 @@ exec --no-startup-id xrandr --output DVI-D-0 --auto --output HDMI-0 --auto --lef
 
 # Background
 exec --no-startup-id feh --bg-fill ~/.setup/des/i3/assets/wallpaper/yosemite_color_block.png
+# Change background randomly
+bindsym $mod+F8 exec --no-startup-id feh --bg-fill --randomize ~/.setup/des/i3/assets/wallpaper
 
 # Compositor
 exec --no-startup-id compton --config ~/.config/compton.conf -b
@@ -48,7 +50,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +1% && pkill 
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%- && pkill -SIGRTMIN+9 i3blocks
 
 # Take a screenshot
-bindsym --release $mod+F3 exec --no-startup-id "/usr/bin/import ~/scratch/screenshots/ss.png && cp ~/scratch/screenshots/latest.png ~/scratch/screenshots/$(date +%F_%T.%N).png"
+bindsym --release $mod+F3 exec --no-startup-id "/usr/bin/import ~/scratch/screenshots/latest.png && cp ~/scratch/screenshots/latest.png ~/scratch/screenshots/$(date +%F_%T.%N).png"
 
 # Use change_fan (int .setup dir) to adjust fan speeds
 # TBD
