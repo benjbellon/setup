@@ -19,6 +19,10 @@ font pango:monospace 8
 # font pango:DejaVu Sans Mono 8
 font pango:Source Code Pro 8
 
+# Notifications via dunst - handled by systemd
+bindsym $mod+F12 exec --no-startup-id /usr/bin/dunstctl close
+bindsym $mod+Shift+F12 exec --no-startup-id /usr/bin/dunstctl history-pop
+
 # Order monitors
 exec --no-startup-id xrandr --output DVI-D-0 --auto --output HDMI-0 --auto --left-of DVI-D-0
 
