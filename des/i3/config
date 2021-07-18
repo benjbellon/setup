@@ -36,6 +36,7 @@ exec --no-startup-id compton --config ~/.config/compton.conf -b
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
+exec --no-startup-id xss-lock --transfer-sleep-lock "~/.setup/des/i3/i3lock-color-custom.sh"
 
 ## Allow yad to float for i3bar calendar
 for_window [class="Yad"] floating enable
@@ -66,7 +67,7 @@ bindsym XF86LaunchA exec --no-startup-id format_displays
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+q kill
