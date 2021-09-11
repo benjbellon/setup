@@ -1,0 +1,10 @@
+@theme "solarized_alternate"
+
+window {
+    font: "Source Code Pro 18";
+}
+
+mainbox {
+    border:  0;
+    padding: 0;
+}
