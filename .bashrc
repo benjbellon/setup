@@ -24,6 +24,11 @@ function mkdirf () {
     mkdir -p $1 && cd $1
 }
 
+# get some random bytes
+function random () {
+    head -c$1 /dev/urandom | tr -dc 'a-zA-Z0-9~!@#$%^&*(_-'
+}
+
 # Customize prompt
 if [ -n "$SSH_CLIENT" ]; then
     ssh_text="ssh"
@@ -51,7 +56,7 @@ alias t='tmux'
 
 export ALTERNATE_EDITOR=""
 export EDITOR="vim"
-export VISUAL=emacs
+export VISUAL="vim"
 
 # NOTE: These env vars happen to be wanted. This also happens to fix a weird bug (just for reference):
 # This is a hack to avoid sbt/scala jline error introduced in the latest ncurses update
