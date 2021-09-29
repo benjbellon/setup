@@ -21,7 +21,7 @@ function show_opam_switch () {
 
 function idf_venv() {
     if [ ! -z "$IDF_PATH" ]; then
-        echo "(idf-venv) "
+        echo "(idf-env) "
     fi
 }
 
@@ -40,9 +40,9 @@ if [ -n "$SSH_CLIENT" ]; then
     ssh_text="ssh"
 fi
 if [ -z $STY ]; then
-    export PS1="\[\033[1;36m\]\$(idf_venv)\[\033[0;34m\]\$(show_opam_switch)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[36;1m\]#$ssh_text\[\033[32m\]:\[\033[33;1m\]\W\[\033[m\]\[\033[34;1m\]\$(parse_git_branch)\[\033[m\]$ "
+    export PS1="\[\033[1;32m\]\$(idf_venv)\[\033[0;34m\]\$(show_opam_switch)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[36;1m\]#$ssh_text\[\033[32m\]:\[\033[33;1m\]\W\[\033[m\]\[\033[34;1m\]\$(parse_git_branch)\[\033[m\]$ "
 else
-    export PS1="\[\033[1;36m\]\$(idf_venv)\[\033[0;34m\]\$(show_opam_switch)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]$STY\[\033[36;1m\]#$ssh_text\[\033[32m\]:\[\033[33;1m\]\W\[\033[m\]\[\033[34;1m\]\$(parse_git_branch)\[\033[m\]$ "
+    export PS1="\[\033[1;32m\]\$(idf_venv)\[\033[0;34m\]\$(show_opam_switch)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]$STY\[\033[36;1m\]#$ssh_text\[\033[32m\]:\[\033[33;1m\]\W\[\033[m\]\[\033[34;1m\]\$(parse_git_branch)\[\033[m\]$ "
 fi
 
 # Alias
