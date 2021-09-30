@@ -14,16 +14,36 @@ ICON_BATTERY_CHARGING=
 ICON_FULL=
 
 PERCENT_FULL=$(echo - | awk -v charge_full="$CHARGE_FULL" -v charge_now="$CHARGE_NOW" '{printf "%1.0f\n", (charge_now / charge_full)*100}')
-if [[ $STATUS == "Full" ]]; then
-    echo "$ICON_FULL"
-elif [[ $STATUS == "Charging" ]]; then
-    echo "$ICON_BATTERY_CHARGING ($PERCENT_FULL%)"
-elif [[ $PERCENT_FULL -lt 100 ]]; then
-    echo "$ICON_BATTERY_FULL ($PERCENT_FULL%)"
-elif [[ $PERCENT_FULL -lt 75 ]]; then
-    echo "$ICON_BATTERY_75_P ($PERCENT_FULL%)"
-elif [[ $PERCENT_FULL -lt 50 ]]; then
-    echo "$ICON_BATTERY_50_P ($PERCENT_FULL%)"
-elif [[ $PERCENT_FULL -lt 25 ]]; then
-    echo "$ICON_BATTERY_25_P ($PERCENT_FULL%)"
+message=""
+
+if [[ $PERCENT_FULL -le 20 ]]; then
+    FILE_OUT=/tmp/i3block_battery_warning
+
+    if [[ $PERCENT_FULL -eq 20 && ! -f ${FILE_OUT}_15 ]]; then
+        /usr/bin/notify-send -u normal -t 0 "🔋 Low battery! 20% remaining";
+        touch ${FILE_OUT}_15
+    elif [[ $PERCENT_FULL -eq 10 && ! -f ${FILE_OUT}_10 ]]; then
+        /usr/bin/notify-send -u critical -t 0 "🔋 Low battery! 15% remaining";
+        touch ${FILE_OUT}_10
+        touch $FILE_OUT_10
+    elif [[ $PERCENT_FULL -eq 5 && -f ${FILE_OUT}_5 ]]; then
+        /usr/bin/notify-send -u critical -t 0 "🔋 Low battery! 10% remaining";
+        touch ${FILE_OUT}_5
+    fi
 fi
+
+if [[ $STATUS == "Full" ]]; then
+    message="$ICON_FULL"
+elif [[ $STATUS == "Charging" ]]; then
+    message="$ICON_BATTERY_CHARGING ($PERCENT_FULL%)"
+elif [[ $PERCENT_FULL -lt 100 ]]; then
+    message="$ICON_BATTERY_FULL ($PERCENT_FULL%)"
+elif [[ $PERCENT_FULL -lt 75 ]]; then
+    message="$ICON_BATTERY_75_P ($PERCENT_FULL%)"
+elif [[ $PERCENT_FULL -lt 50 ]]; then
+    message="$ICON_BATTERY_50_P ($PERCENT_FULL%)"
+elif [[ $PERCENT_FULL -lt 25 ]]; then
+    message="$ICON_BATTERY_25_P ($PERCENT_FULL%)"
+fi
+
+echo $message
