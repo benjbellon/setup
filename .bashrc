@@ -95,7 +95,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     alias ls='ls --color=auto'
 
     # Setup keychain
-    /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519 $HOME/.ssh/nido_id_ed25519
+    /usr/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_ed25519
     /usr/bin/keychain --agents gpg AE38865D
     . $HOME/.keychain/${HOSTNAME}-sh
     . $HOME/.keychain/${HOSTNAME}-sh-gpg
