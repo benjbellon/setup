@@ -23,6 +23,7 @@ font pango:monospace 8
 font pango:Source Code Pro 8
 
 # Notifications via dunst - handled by systemd
+exec --no-startup-id dunst
 bindsym $mod+F12 exec --no-startup-id /usr/bin/dunstctl close
 bindsym $mod+Shift+F12 exec --no-startup-id /usr/bin/dunstctl history-pop
 
@@ -30,7 +31,7 @@ bindsym $mod+Shift+F12 exec --no-startup-id /usr/bin/dunstctl history-pop
 exec --no-startup-id xrandr --output DVI-D-0 --auto --output HDMI-0 --auto --left-of DVI-D-0
 
 # Background
-exec --no-startup-id feh --bg-fill ~/.setup/des/i3/assets/wallpaper/yosemite_color_block.png
+exec --no-startup-id feh --bg-fill --randomize ~/.setup/des/i3/assets/wallpaper # ~/.setup/des/i3/assets/wallpaper/yosemite_color_block.png
 # Change background randomly
 bindsym $mod+F8 exec --no-startup-id feh --bg-fill --randomize ~/.setup/des/i3/assets/wallpaper
 

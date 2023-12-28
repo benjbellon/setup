@@ -3,6 +3,8 @@
 #
 PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/go/bin
+PATH=$PATH:$HOME/.local/bin
+
 export PATH
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc

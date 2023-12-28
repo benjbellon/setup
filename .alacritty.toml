@@ -1,0 +1,46 @@
+import = [
+    "~/.setup/solarized_dark.toml"
+]
+
+[bell]
+duration = 0
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[font]
+size = 9
+
+[font.bold]
+family = "Source Code Pro"
+style = "Bold"
+
+[font.italic]
+family = "Source Code Pro"
+style = "Medium Italic"
+
+[font.normal]
+family = "Source Code Pro"
+style = "Medium"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[scrolling]
+history = 100000
+
+[window.dimensions]
+columns = 100
+lines = 85
+
+[window.padding]
+x = 1
+y = 0
