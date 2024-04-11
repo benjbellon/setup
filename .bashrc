@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 export HISTSIZE=-1
+export HISTTIMEFORMAT="[%F %H:%M] "
 
 # generic setup
 function parse_git_branch () {
@@ -117,6 +118,7 @@ fi
 
 source ~/.setup/.git-completion.bash
 source ~/.setup/.bashrc.local
+[ -f "/home/benj/.ghcup/env" ] && source "/home/benj/.ghcup/env" # ghcup-env
 
 complete -cf sudo
 complete -C /usr/bin/vault vault
